@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste Javascript</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <h1>hello top of root</h1>
+    <div id="root">
+        <h1>Faizan is here</h1>  <!--this will be replaced by 'parent' not appended-->
+    </div>
+    <h1>hello bottom  of root</h1>  <!--react will only work for root-->
+
+
+    <!-- order of files matter  -->
+<!-- <script src="./app.js"></script> this must be written after writing react code-->
+
+<!-- cdn links extracting react to this  -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- what is cross origin ? why we write it ? -->
+
+
+<script src="./app.js"></script>
+
+</body>
+</html>
