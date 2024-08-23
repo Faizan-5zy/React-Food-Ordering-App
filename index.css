@@ -104,3 +104,10 @@
     padding: 0 20px;
     cursor: pointer;
 }
+
+/* 8 lets get classy  */
+
+.user-card{
+    padding:10px;
+    border: 1px solid black;
+}
