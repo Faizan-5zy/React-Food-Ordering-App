@@ -1,4 +1,19 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* 10 jo dikhta vo bikta 
+remove all css and give tailwind cinfiguration here
+*/
+
+
+
+
+
+
+/* .header{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -107,7 +122,7 @@
 
 /* 8 lets get classy  */
 
-.user-card{
+/* .user-card{
     padding:10px;
     border: 1px solid black;
-}
+}  */

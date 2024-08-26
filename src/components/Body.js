@@ -43,18 +43,19 @@ const onlineStatus = useOnlineStatus()
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search-container">
+      <div className="filter flex items-center">
+        <div className="search p-4 m-4 ">
           <input
             type="text"
-            className="search-input"
+            className="border border-solid border-black rounded"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
+          
           <button
-            className="search-button"
+            className="px-4 py-1 bg-green-100 m-4 rounded"
             onClick={() => {
               const filteredRestaurants = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -66,8 +67,10 @@ const onlineStatus = useOnlineStatus()
           </button>
         </div>
 
+
+        <div className="top-rated p-4 m-4  ">
         <button
-          className="filter-btn"
+          className="bg-green-100 rounded px-2 py-1 "
           onClick={() => {
             const filteredItems = listOfRestaurants.filter((res) => {
               return res.info.avgRating > 4.5;
@@ -78,9 +81,10 @@ const onlineStatus = useOnlineStatus()
           {" "}
           Top Rated Restaurants{" "}
         </button>
+        </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filteredRestaurant.map((restaurant) =>
 
           (
