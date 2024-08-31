@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 // 7
 import {Link} from 'react-router-dom'
 import useOnlineStatus from "../../utils/useOnlineStatus";
-
+// (11) useContext
+import UserContext from "../../utils/UserContext";
 
 const Header = () => {
 
   const [ btnNameReact , setbtnNameReact ]= useState('Login')
 
-   console.log("header rendered") // re-render because of state variable.
+  //  console.log("header rendered") // re-render because of state variable.
   
+  // 11 react context
+  // const data = useContext(UserContext)
+  const {loggedInUser} = useContext(UserContext)
+  // console.log(loggedInUser)
+
 
 // (7) if no dependency array present, the useEffect is called on every render 
   //  useEffect(()=>{
@@ -82,12 +88,18 @@ const Header = () => {
             </li>
             <li className="px-4">Cart</li>
 
-            <button className="login-btn" onClick={()=>{
+            <button className="login-btn mx-2" onClick={()=>{
               btnNameReact===('Login')?
               setbtnNameReact('Logout'):
               setbtnNameReact('Login')
             }}>{btnNameReact}</button>
           
+          {/* context  */}
+          <li className="mx-2 font-bold">
+            {loggedInUser}
+          </li>
+
+
           </ul>
         </div>
       </div>

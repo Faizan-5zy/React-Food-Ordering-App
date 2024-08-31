@@ -34,7 +34,7 @@ class UserClass extends React.Component{
         const data = await fetch("https://api.github.com/users/Faizan-5zy")
 
         const json = await data.json();
-        console.log("json:", json)  
+        // console.log("json:", json)  
         
 
         // the state variable is updated 
@@ -45,11 +45,11 @@ class UserClass extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log('componentDidUpdate called')
+        // console.log('componentDidUpdate called')
     }
 
     componentWillUnmount(){
-        console.log('componentWillUnmount called')
+        // console.log('componentWillUnmount called')
     }
 
     

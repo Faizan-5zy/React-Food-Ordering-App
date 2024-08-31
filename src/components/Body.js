@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import { useContext, useEffect, useState } from "react";
+import RestaurantCard , {withPromotedLabel} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+// 11
+import UserContext from "../../utils/UserContext";
 
 
 const Body = () => {
@@ -12,7 +14,7 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState([]);
 
-  //  useEffect
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
 
   useEffect(() => {
     fetchData();
@@ -37,6 +39,11 @@ const onlineStatus = useOnlineStatus()
   if(!onlineStatus){
     return <h1>You are offline 😓, Please check your connection 💻🔌 </h1>
   }
+
+
+  // 11
+
+  const {setshowUserName,loggedInUser}=useContext(UserContext)
 
 
   return listOfRestaurants.length === 0 ? (
@@ -82,19 +89,25 @@ const onlineStatus = useOnlineStatus()
           Top Rated Restaurants{" "}
         </button>
         </div>
+
+          {/* 11 */}
+        <div className="p-4 m-4  ">
+        <input className="border border-black p-2" value={loggedInUser} onChange={(e)=>{setshowUserName(e.target.value)}}/>
+        </div>
       </div>
 
       <div className="res-container flex flex-wrap">
         {filteredRestaurant.map((restaurant) =>
 
-          (
-            // console.log('restaurant',restaurant.info.id)
+(
+            // console.log('restaurant',restaurant.info.isOpen)
             <Link
              key={restaurant.id}
              to={'/restaurants/'+restaurant.info.id}
              style={{paddingLeft: 13, textDecoration: 'none'}}
              >
-             <RestaurantCard resData={restaurant} />
+             {restaurant.info.isOpen? <RestaurantCardPromoted resData={restaurant} /> :
+             <RestaurantCard resData={restaurant} /> }
              </Link>
           )
         

@@ -1,4 +1,4 @@
-import React , {lazy, Suspense} from "react";
+import React , {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,15 +9,38 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
+// 11
+import UserContext from "../utils/UserContext";
 
 
 
 const AppLayout = () => {
+
+
+  const [showUserName,setshowUserName]=useState()
+
+  useEffect(()=>{
+    // make API to fetch name 
+    const data={
+      name:'Ismail Faizan'
+    }
+    setshowUserName(data.name)
+  },[])
+
+
+
   return (
+    <UserContext.Provider value={{loggedInUser:showUserName , setshowUserName}}>
+
     <div className="app">
+      {/*(11) nested context provider  */}
+    <UserContext.Provider value={{loggedInUser:'Faizan Ismail'}}>
       <Header />
+      </UserContext.Provider>
       <Outlet />
     </div>
+    
+    </UserContext.Provider>
   );
 };
 
