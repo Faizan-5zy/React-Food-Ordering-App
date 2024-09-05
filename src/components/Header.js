@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 import useOnlineStatus from "../../utils/useOnlineStatus";
 // (11) useContext
 import UserContext from "../../utils/UserContext";
+// (12)
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
@@ -50,7 +52,12 @@ const Header = () => {
 // (8 custom hooks) 
    const onlineStatus = useOnlineStatus()
 
+// 12 subscribing to the whole store 
+// const cartItems = useSelector((store)=>store)
 
+// 12 subscribing to the small portion of store 
+const cartItems = useSelector((store)=>store.cart.items)
+console.log("cartItems:", cartItems)
 
 
     return (
@@ -79,14 +86,18 @@ const Header = () => {
             <li className="px-4">
               <Link to='/about'>About Us</Link>
             </li>
+           
             <li className="px-4">
-            <Link to='/contact'>Contact Us</Link>
+              <Link to='/contact'>Contact Us</Link>
             </li>
 
             <li className="px-4">
               <Link to='/grocery'>Grocery</Link>
             </li>
-            <li className="px-4">Cart</li>
+
+            <li className="px-4">
+              <Link to='/cart'>🛒 - ({cartItems.length} items)</Link>
+            </li>
 
             <button className="login-btn mx-2" onClick={()=>{
               btnNameReact===('Login')?

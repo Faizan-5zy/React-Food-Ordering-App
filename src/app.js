@@ -11,6 +11,10 @@ import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
 // 11
 import UserContext from "../utils/UserContext";
+// 12 
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
+import Cart from "./components/Cart";
 
 
 
@@ -30,6 +34,9 @@ const AppLayout = () => {
 
 
   return (
+    // 12 
+    <Provider store={appStore}>
+
     <UserContext.Provider value={{loggedInUser:showUserName , setshowUserName}}>
 
     <div className="app">
@@ -41,6 +48,7 @@ const AppLayout = () => {
     </div>
     
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -69,6 +77,10 @@ const appRouter = createBrowserRouter([
             </Suspense>
 
         ),
+      },
+      {
+        path:'/cart',
+        element:<Cart />,
       },
       {
         path:'/about',
