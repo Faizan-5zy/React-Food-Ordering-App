@@ -32,9 +32,7 @@ const Header = () => {
   //  },[])
 
 // (7) if dependency array present [btnNameReact], the useEffect is called on every change in dependency
-   useEffect(()=>{
-    console.log('UseEffect called')
-   },[btnNameReact])
+   useEffect(()=>{},[btnNameReact])
    
 
 //  (7) useState variables: are written within the component and at the beginnning . useeffect are not allowed to write within loops , conditions, functions
@@ -57,7 +55,7 @@ const Header = () => {
 
 // 12 subscribing to the small portion of store 
 const cartItems = useSelector((store)=>store.cart.items)
-console.log("cartItems:", cartItems)
+// console.log("cartItems:", cartItems)
 
 
     return (
@@ -96,7 +94,11 @@ console.log("cartItems:", cartItems)
             </li>
 
             <li className="px-4">
-              <Link to='/cart'>🛒 - ({cartItems.length} items)</Link>
+              <Link to='/cart'>
+              <div data-testid='cartItem'>
+              🛒 - ({cartItems.length} items)
+              </div>
+              </Link>
             </li>
 
             <button className="login-btn mx-2" onClick={()=>{

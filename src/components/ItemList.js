@@ -25,9 +25,10 @@ const ItemList = ({items , dummy}) => {
 
     return (
         <div>
-           {items.map((item)=>(
-            <div key={item.card?.info?.id} className= "border-gray-400  border-b-2 p-2 m-2">
+           {items?.map((item)=>(
+            <div data-testid='foodItems' key={item.card?.info?.id} className= "border-gray-400  border-b-2 p-2 m-2">
                 
+                <div className="font-bold ">{item.card?.info?.category}</div>
                 <div className="flex justify-between flex-grow items-center">
                     <div className="p-4 text-left text-wrap">
                         <span>{item.card?.info?.name}-</span>

@@ -46,7 +46,7 @@ const onlineStatus = useOnlineStatus()
   const {setshowUserName,loggedInUser}=useContext(UserContext)
 
 
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -54,6 +54,7 @@ const onlineStatus = useOnlineStatus()
         <div className="search p-4 m-4 ">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black rounded"
             value={searchText}
             onChange={(e) => {
@@ -64,7 +65,7 @@ const onlineStatus = useOnlineStatus()
           <button
             className="px-4 py-1 bg-green-100 m-4 rounded"
             onClick={() => {
-              const filteredRestaurants = listOfRestaurants.filter((res) =>
+              const filteredRestaurants = listOfRestaurants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setfilteredRestaurant(filteredRestaurants);
@@ -75,11 +76,13 @@ const onlineStatus = useOnlineStatus()
         </div>
 
 
-        <div className="top-rated p-4 m-4  ">
+        <div
+        data-testid="topResBtn" 
+        className="top-rated p-4 m-4  ">
         <button
           className="bg-green-100 rounded px-2 py-1 "
           onClick={() => {
-            const filteredItems = listOfRestaurants.filter((res) => {
+            const filteredItems = listOfRestaurants?.filter((res) => {
               return res.info.avgRating > 4.5;
             });
             setfilteredRestaurant(filteredItems);
@@ -97,7 +100,7 @@ const onlineStatus = useOnlineStatus()
       </div>
 
       <div className="res-container flex flex-wrap">
-        {filteredRestaurant.map((restaurant) =>
+        {filteredRestaurant?.map((restaurant) =>
 
 (
             // console.log('restaurant',restaurant.info.isOpen)
