@@ -1,6 +1,4 @@
-Namaste React episode 1 : Inception
-
-# namste food ordering app
+# food ordering app
 
 //header:
 // -Logo
